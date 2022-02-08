@@ -27,7 +27,7 @@ def scrape(inp):
             counter = 0
             for x in i:
                 doc.find_all("td", {"style": "text-align: right;"})
-                if ':' in x.get_text() and ',' in x.get_text() and len(x.get_text()) == 7:
+                if ':' in x.get_text() and ',' in x.get_text() and len(x.get_text()) == 7 or x.get_text() == "--":
                     counter += 1
                     if counter == nrOfCheckpoints:
                         results.append([x.get_text()])

@@ -2,7 +2,7 @@ from bs4 import BeautifulSoup
 import requests
 
 # relevant fields for Phocas
-fields = ["HE", "DE", "LHE", "LDE", "HSB", "DSB", "LHSB", "LDSB", "HG", "DG", "LHG", "LDG", "HEj8", "DEj8", "LHEj8", "LDEj4",
+fields = ["HE", "DE", "LHE", "LDE", "HSB", "DSB", "LHSB", "LDSB", "HG", "DG", "LHG", "LDG", "HVA", "HEj8", "DEj8", "LHEj8", "LDEj4",
           "HEj4", "DEj4", "LHEj4", "HCl8", "DCl8", "HEj 8", "DEj 8", "LHEj 8", "LDEj 4", "HEj 4", "DEj 4", "LHEj 4", "HCl 8", "DCl 8"]
 
 urls = ["https://regatta.time-team.nl/nkir/2021/results/e1db283aa-e117-4a97-84a0-5b8c6e3b9fdb.php",
@@ -19,7 +19,6 @@ urls = ["https://regatta.time-team.nl/nkir/2021/results/e1db283aa-e117-4a97-84a0
         "https://regatta.time-team.nl/nkir/2021/results/ead3520ad-4657-46e5-ae93-d03f138e33f4.php",
         "https://regatta.time-team.nl/nkir/2021/results/ef044e6f8-eba3-4a53-b005-3b901fe85543.php"]
 
-
 def scrape(inp):
     results = []
     for i in inp:
@@ -33,7 +32,6 @@ def scrape(inp):
                     if counter == nrOfCheckpoints:
                         results.append([x.get_text()])
     return results
-
 
 scrapeResults = []
 for url in urls:
@@ -51,7 +49,10 @@ for url in urls:
     for i in fields:
         if i in title:
             matches.append(i)
-    temp.append(max(matches, key=len))
+    if len(matches) > 0:
+        temp.append(max(matches, key=len))
+    else:
+        temp.append(title)
     temp.append(year)
 
     results = []
@@ -67,4 +68,6 @@ for url in urls:
             if val == []:
                 del fst[idx]
 
-print(scrapeResults)
+for i in scrapeResults:
+    print(i)
+    print()

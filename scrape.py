@@ -7,9 +7,22 @@ fields = ["HE", "DE", "LHE", "LDE", "HSB", "DSB", "LHSB", "LDSB", "HG", "DG", "L
 urls = ["https://regatta.time-team.nl/nkir/2021/results/e5b29ee9c-7fc9-492e-b0e1-a6512a26f0d8.php",
 "https://regatta.time-team.nl/nkir/2021/results/e6d4a42e6-ca26-43d4-b618-63a1801360b0.php",
 "https://regatta.time-team.nl/nkir/2021/results/e680cd704-9ba9-48c0-8728-a4cfb2b36cc9.php", 
-"https://regatta.time-team.nl/nkir/2021/results/r21f8743c-08db-408f-bf14-10234043df99.php#912c48e3-97e1-45b0-aed5-93c333639188"]
+"https://regatta.time-team.nl/nkir/2021/results/r21f8743c-08db-408f-bf14-10234043df99.php#912c48e3-97e1-45b0-aed5-93c333639188",
+"https://regatta.time-team.nl/nkir/2021/results/r1023ba23-2a41-475f-b925-c1c045b235d8.php#88bc2057-59e5-4138-b36f-b17456b1778f"]
 
-
+def scrape(inp):
+    results = []
+    for i in inp:
+        team = i.td.next_sibling
+        if team.get_text() == "PHO":
+            counter = 0
+            for x in i:
+                doc.find_all("td", {"style": "text-align: right;"})
+                if ':' in x.get_text() and ',' in x.get_text() and len(x.get_text()) == 7:
+                    counter += 1
+                    if counter == nrOfCheckpoints:
+                        results.append([x.get_text()])
+    return results
 
 scrapeResults = []
 for url in urls:
@@ -18,7 +31,7 @@ for url in urls:
 
     temp = []
     title = "Geen veld gevonden"
-    nrOfRowers = 4
+    nrOfCheckpoints = 4
 
     title = doc.find_all("h2")
     title = title[0].get_text()
@@ -27,38 +40,19 @@ for url in urls:
         if i in title:
             matches.append(i)
     temp.append(max(matches, key=len))
-    if "4" in max(matches, key=len):
-        nrOfRowers = 4
-    elif "8" in max(matches, key=len):
-        nrOfrowers = 8
 
     results = []
-    for even in doc.find_all("tr", {"class": "even"}):
-        team = even.td.next_sibling
-        if team.get_text() == "PHO":
-            counter = 0
-            for x in even:
-                doc.find_all("td", {"style": "text-align: right;"})
-                if ':' in x.get_text() and ',' in x.get_text() and len(x.get_text()) == 7:
-                    counter += 1
-                    if counter == nrOfRowers:
-                        results.append([x.get_text()])    
-
-    for odd in doc.find_all("tr", {"class": "odd"}):
-        team = odd.td.next_sibling
-        if team.get_text() == "PHO":
-            counter = 0
-            for x in odd:
-                doc.find_all("td", {"style": "text-align: right;"})
-                if ':' in x.get_text() and ',' in x.get_text() and len(x.get_text()) == 7:
-                    counter += 1
-                    if counter == nrOfRowers:
-                        results.append([x.get_text()])            
-
+    results.append(scrape(doc.find_all("tr", {"class": "even"})))
+    results.append(scrape(doc.find_all("tr", {"class": "odd"})))
 
     for j in results:
         temp.append(j)
 
     scrapeResults.append(temp)
+    for fst in  scrapeResults:
+        for idx,val in enumerate(fst):
+            if val == []:
+                del fst[idx]
+
 
 print(scrapeResults)

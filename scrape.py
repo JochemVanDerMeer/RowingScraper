@@ -1,14 +1,24 @@
 from bs4 import BeautifulSoup
 import requests
 
-#relevant fields for Phocas
-fields = ["HE", "DE", "LHE", "LDE", "HSB", "DSB", "LHSB", "LDSB", "HG", "DG", "LHG", "LDG", "HEj8", "DEj8", "LHEj8", "LDEj4", "HEj4", "DEj4", "LHEj4", "HCl8", "DCl8", "HEj 8", "DEj 8", "LHEj 8", "LDEj 4", "HEj 4", "DEj 4", "LHEj 4", "HCl 8", "DCl 8" ]
+# relevant fields for Phocas
+fields = ["HE", "DE", "LHE", "LDE", "HSB", "DSB", "LHSB", "LDSB", "HG", "DG", "LHG", "LDG", "HEj8", "DEj8", "LHEj8", "LDEj4",
+          "HEj4", "DEj4", "LHEj4", "HCl8", "DCl8", "HEj 8", "DEj 8", "LHEj 8", "LDEj 4", "HEj 4", "DEj 4", "LHEj 4", "HCl 8", "DCl 8"]
 
-urls = ["https://regatta.time-team.nl/nkir/2021/results/e5b29ee9c-7fc9-492e-b0e1-a6512a26f0d8.php",
-"https://regatta.time-team.nl/nkir/2021/results/e6d4a42e6-ca26-43d4-b618-63a1801360b0.php",
-"https://regatta.time-team.nl/nkir/2021/results/e680cd704-9ba9-48c0-8728-a4cfb2b36cc9.php", 
-"https://regatta.time-team.nl/nkir/2021/results/r21f8743c-08db-408f-bf14-10234043df99.php#912c48e3-97e1-45b0-aed5-93c333639188",
-"https://regatta.time-team.nl/nkir/2021/results/r1023ba23-2a41-475f-b925-c1c045b235d8.php#88bc2057-59e5-4138-b36f-b17456b1778f"]
+urls = ["https://regatta.time-team.nl/nkir/2021/results/e1db283aa-e117-4a97-84a0-5b8c6e3b9fdb.php",
+        "https://regatta.time-team.nl/nkir/2021/results/ec28a21b0-6afe-41b9-a6ec-690ec281f0ea.php",
+        "https://regatta.time-team.nl/nkir/2021/results/e9f15a00b-6dce-4a76-a766-e9b0471ffe49.php",
+        "https://regatta.time-team.nl/nkir/2021/results/e082fbfa9-ec66-496a-a9bf-31bdf7b860d3.php",
+        "https://regatta.time-team.nl/nkir/2021/results/e4ecf8215-d90b-4fb3-aba6-2fe082581ea5.php",
+        "https://regatta.time-team.nl/nkir/2021/results/eea7656c9-ce8f-4d45-8097-cc17d194e3a5.php",
+        "https://regatta.time-team.nl/nkir/2021/results/e33e762f8-03b0-4b98-a132-8f6ac458726e.php",
+        "https://regatta.time-team.nl/nkir/2021/results/e6d4a42e6-ca26-43d4-b618-63a1801360b0.php",
+        "https://regatta.time-team.nl/nkir/2021/results/e680cd704-9ba9-48c0-8728-a4cfb2b36cc9.php",
+        "https://regatta.time-team.nl/nkir/2021/results/efc7a0b71-f006-4f43-8231-2cb4f8d1ad4e.php",
+        "https://regatta.time-team.nl/nkir/2021/results/e5b29ee9c-7fc9-492e-b0e1-a6512a26f0d8.php",
+        "https://regatta.time-team.nl/nkir/2021/results/ead3520ad-4657-46e5-ae93-d03f138e33f4.php",
+        "https://regatta.time-team.nl/nkir/2021/results/ef044e6f8-eba3-4a53-b005-3b901fe85543.php"]
+
 
 def scrape(inp):
     results = []
@@ -24,11 +34,13 @@ def scrape(inp):
                         results.append([x.get_text()])
     return results
 
+
 scrapeResults = []
 for url in urls:
     result = requests.get(url)
     doc = BeautifulSoup(result.text, "html.parser")
 
+    year = url[34:38]
     temp = []
     title = "Geen veld gevonden"
     nrOfCheckpoints = 4
@@ -40,6 +52,7 @@ for url in urls:
         if i in title:
             matches.append(i)
     temp.append(max(matches, key=len))
+    temp.append(year)
 
     results = []
     results.append(scrape(doc.find_all("tr", {"class": "even"})))
@@ -49,10 +62,9 @@ for url in urls:
         temp.append(j)
 
     scrapeResults.append(temp)
-    for fst in  scrapeResults:
-        for idx,val in enumerate(fst):
+    for fst in scrapeResults:
+        for idx, val in enumerate(fst):
             if val == []:
                 del fst[idx]
-
 
 print(scrapeResults)

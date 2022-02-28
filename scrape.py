@@ -1,23 +1,8 @@
 from bs4 import BeautifulSoup
 import requests
+from urls import urls
 
-# relevant fields for Phocas
-fields = ["HE", "DE", "LHE", "LDE", "HSB", "DSB", "LHSB", "LDSB", "HG", "DG", "LHG", "LDG", "HVA", "HEj8", "DEj8", "LHEj8", "LDEj4",
-          "HEj4", "DEj4", "LHEj4", "HCl8", "DCl8", "HEj 8", "DEj 8", "LHEj 8", "LDEj 4", "HEj 4", "DEj 4", "LHEj 4", "HCl 8", "DCl 8"]
-
-urls = ["https://regatta.time-team.nl/nkir/2021/results/e1db283aa-e117-4a97-84a0-5b8c6e3b9fdb.php",
-        "https://regatta.time-team.nl/nkir/2021/results/ec28a21b0-6afe-41b9-a6ec-690ec281f0ea.php",
-        "https://regatta.time-team.nl/nkir/2021/results/e9f15a00b-6dce-4a76-a766-e9b0471ffe49.php",
-        "https://regatta.time-team.nl/nkir/2021/results/e082fbfa9-ec66-496a-a9bf-31bdf7b860d3.php",
-        "https://regatta.time-team.nl/nkir/2021/results/e4ecf8215-d90b-4fb3-aba6-2fe082581ea5.php",
-        "https://regatta.time-team.nl/nkir/2021/results/eea7656c9-ce8f-4d45-8097-cc17d194e3a5.php",
-        "https://regatta.time-team.nl/nkir/2021/results/e33e762f8-03b0-4b98-a132-8f6ac458726e.php",
-        "https://regatta.time-team.nl/nkir/2021/results/e6d4a42e6-ca26-43d4-b618-63a1801360b0.php",
-        "https://regatta.time-team.nl/nkir/2021/results/e680cd704-9ba9-48c0-8728-a4cfb2b36cc9.php",
-        "https://regatta.time-team.nl/nkir/2021/results/efc7a0b71-f006-4f43-8231-2cb4f8d1ad4e.php",
-        "https://regatta.time-team.nl/nkir/2021/results/e5b29ee9c-7fc9-492e-b0e1-a6512a26f0d8.php",
-        "https://regatta.time-team.nl/nkir/2021/results/ead3520ad-4657-46e5-ae93-d03f138e33f4.php",
-        "https://regatta.time-team.nl/nkir/2021/results/ef044e6f8-eba3-4a53-b005-3b901fe85543.php"]
+fields = ["HE", "DE", "LHE", "LDE", "HSB", "DSB", "LHSB", "LDSB", "HG", "DG", "LHG", "LDG", "HVA", "HEj8", "DEj8", "LHEj8", "LDEj4", "HEj4", "DEj4", "LHEj4", "HCl8", "DCl8", "HEj 8", "DEj 8", "LHEj 8", "LDEj 4", "HEj 4", "DEj 4", "LHEj 4", "HCl 8", "DCl 8", "HCl 4", "DCl 4", "G", "Ej 4", "LEj 8", "DEj 8", "DCl", "HCl", "DN", "SA", "LSA", "LN", "LDN", "VA", "M18"]
 
 def scrape(inp):
     results = []
@@ -44,7 +29,10 @@ for url in urls:
     nrOfCheckpoints = 4
 
     title = doc.find_all("h2")
-    title = title[0].get_text()
+    if len(title) > 0:
+        title = title[0].get_text()
+    else:
+        title = "Veld onbekend"
     matches = []
     for i in fields:
         if i in title:

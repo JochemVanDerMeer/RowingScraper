@@ -1,6 +1,6 @@
 # Rowing Scraper
 
-This is a scraper that retrieves results from Student Rowing Association Phocas at the Dutch Championship Indoor Rowing (NKIR). The results are written to an .xls file, which can be used for further purposes by the association. Built with Python.
+This project retrieves results from Student Rowing Association Phocas at the Dutch Championship Indoor Rowing (NKIR). The results are written to an .xls file, which can be used for further purposes by the association. Built with Python.
 
 ## Project description
 The manual part of this scraper consists of adding URLS to scrape. The Time Team website (https://time-team.nl/nl/info) provides results sorted by association, making it easy to add the URLs of races in which Phocas competes. 

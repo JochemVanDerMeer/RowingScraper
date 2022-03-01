@@ -42,6 +42,6 @@ def writeResult():
             sheet1.write(currentRow, fields.index(j[0])+1, listToString(changeFormat(j[2])))
     sheet1.write(currentRow, 0, currentYear)
 
-    wb.save('xlwt example.xls')
+    wb.save('nkir_times.xls')
 
 writeResult()

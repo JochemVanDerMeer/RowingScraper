@@ -7,7 +7,7 @@ The manual part of this scraper consists of adding URLS to scrape, these URLs ar
 
 `scrape.py` finds the relevant times and writes them to `output.txt`. This file is then used by `createSheet.py` which processes the results and creates a table, which is then written to `nkir_times.xls`.
 
-`fields.py` contains the rowing "fields" in which Phocas competes. For example, "LHEj 8" stands for "Lichte Heren Eerstejaars acht", translation: "Men's Lightweights Freshmen Eight".  
+`fields.py` contains the rowing "fields" in which Phocas competes. For example, "LHEj 8" stands for "Lichte Heren Eerstejaars Acht", translation: "Men's Lightweights Freshmen Eight".  
 
 ## Reflection
 

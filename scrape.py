@@ -1,8 +1,9 @@
 from bs4 import BeautifulSoup
 import requests
 from urls import urls
+from fields import fields
 
-fields = ["HE", "DE", "LHE", "LDE", "HSB", "DSB", "LHSB", "LDSB", "HG", "DG", "LHG", "LDG", "HVA", "HEj8", "DEj8", "LHEj8", "LDEj4", "HEj4", "DEj4", "LHEj4", "HCl8", "DCl8", "HEj 8", "DEj 8", "LHEj 8", "LDEj 4", "HEj 4", "DEj 4", "LHEj 4", "HCl 8", "DCl 8", "HCl 4", "DCl 4", "G", "Ej 4", "LEj 8", "DEj 8", "DCl", "HCl", "DN", "SA", "LSA", "LN", "LDN", "VA", "M18"]
+open('output.txt', 'w').close()
 
 def scrape(inp):
     results = []
@@ -57,5 +58,7 @@ for url in urls:
                 del fst[idx]
 
 for i in scrapeResults:
-    print(i)
-    print()
+    with open("output.txt", "a") as f:
+        f.write(str(i))
+        f.write("\n")
+    

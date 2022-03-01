@@ -1,4 +1,5 @@
-urls = ["https://regatta.time-team.nl/nkir/2021/results/e1db283aa-e117-4a97-84a0-5b8c6e3b9fdb.php",
+urls = [
+        "https://regatta.time-team.nl/nkir/2021/results/e1db283aa-e117-4a97-84a0-5b8c6e3b9fdb.php",
         "https://regatta.time-team.nl/nkir/2021/results/ec28a21b0-6afe-41b9-a6ec-690ec281f0ea.php",
         "https://regatta.time-team.nl/nkir/2021/results/e9f15a00b-6dce-4a76-a766-e9b0471ffe49.php",
         "https://regatta.time-team.nl/nkir/2021/results/e082fbfa9-ec66-496a-a9bf-31bdf7b860d3.php",
@@ -26,7 +27,6 @@ urls = ["https://regatta.time-team.nl/nkir/2021/results/e1db283aa-e117-4a97-84a0
 
         "https://regatta.time-team.nl/nkir/2018/results/e8601c720-8ce5-4a76-b932-ba05469e4d26.php",
         "https://regatta.time-team.nl/nkir/2018/results/ee4a54f31-b186-4afd-9168-b592abe688a1.php",
-        "https://regatta.time-team.nl/nkir/2018/results/e8601c720-8ce5-4a76-b932-ba05469e4d26.php",
         "https://regatta.time-team.nl/nkir/2018/results/e91d02437-575f-44de-96f5-eb81160eb701.php",
         "https://regatta.time-team.nl/nkir/2018/results/e31181643-ceaa-4071-9e23-98f166f949e9.php",
 
@@ -40,4 +40,41 @@ urls = ["https://regatta.time-team.nl/nkir/2021/results/e1db283aa-e117-4a97-84a0
         "https://regatta.time-team.nl/nkir/2017/results/ee162337f-91a8-4258-aa24-b4bc1bb3b0bc.php",
         "https://regatta.time-team.nl/nkir/2017/results/e31318b6b-6c00-46e9-ae78-2b25b29c2d5d.php",
         "https://regatta.time-team.nl/nkir/2017/results/e7a2eee4f-de2b-4797-afb1-eb6c8b10ea4b.php",
+
+        "https://regatta.time-team.nl/nkir/2016/results/031.php",
+        "https://regatta.time-team.nl/nkir/2016/results/030.php",
+        "https://regatta.time-team.nl/nkir/2016/results/100.php",
+        "https://regatta.time-team.nl/nkir/2016/results/016.php",
+        "https://regatta.time-team.nl/nkir/2016/results/015.php",
+        "https://regatta.time-team.nl/nkir/2016/results/014.php",
+        "https://regatta.time-team.nl/nkir/2016/results/010.php",
+        "https://regatta.time-team.nl/nkir/2016/results/003.php",
+        "https://regatta.time-team.nl/nkir/2016/results/001.php",
+        "https://regatta.time-team.nl/nkir/2016/results/023.php",
+        'https://regatta.time-team.nl/nkir/2016/results/022.php',
+        "https://regatta.time-team.nl/nkir/2016/results/021.php",
+        "https://regatta.time-team.nl/nkir/2016/results/020.php",
+
+        "https://regatta.time-team.nl/nkir/2015/results/031.php",
+        "https://regatta.time-team.nl/nkir/2015/results/015.php",
+        "https://regatta.time-team.nl/nkir/2015/results/013.php",
+        "https://regatta.time-team.nl/nkir/2015/results/008.php",
+        "https://regatta.time-team.nl/nkir/2015/results/016.php",
+        "https://regatta.time-team.nl/nkir/2015/results/006.php",
+        "https://regatta.time-team.nl/nkir/2015/results/003.php",
+        "https://regatta.time-team.nl/nkir/2015/results/001.php",
+        "https://regatta.time-team.nl/nkir/2015/results/022.php",
+        "https://regatta.time-team.nl/nkir/2015/results/021.php",
+        "https://regatta.time-team.nl/nkir/2015/results/020.php",
+
+        "https://regatta.time-team.nl/nkir/2014/results/021.php",
+        "https://regatta.time-team.nl/nkir/2014/results/020.php",
+        "https://regatta.time-team.nl/nkir/2014/results/015.php",
+        "https://regatta.time-team.nl/nkir/2014/results/014.php",
+        "https://regatta.time-team.nl/nkir/2014/results/013.php",
+        "https://regatta.time-team.nl/nkir/2014/results/003.php",
+        "https://regatta.time-team.nl/nkir/2014/results/001.php",
+        "https://regatta.time-team.nl/nkir/2014/results/018.php",
+        "https://regatta.time-team.nl/nkir/2014/results/017.php",
+        "https://regatta.time-team.nl/nkir/2014/results/016.php"
         ]

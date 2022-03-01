@@ -1,22 +1,47 @@
 import xlwt
 from xlwt import Workbook
+import ast
+from fields import fields
 
 f = open('output.txt', 'r')
 
-wb = Workbook()
+def changeFormat(times):
+    final = [item for sublist in times for item in sublist]
+    return final
 
-sheet1 = wb.add_sheet('Sheet 1')
+def listToString(s): 
+    str1 = "   " 
+    return (str1.join(s))
 
-sheet1.write(1, 0, 'ISBT DEHRADUN')
-sheet1.write(1, 1, 'tasItasesfsSBT DEHRADUN')
-sheet1.write(2, 0, 'SHASTRADHARA')
-sheet1.write(3, 0, 'CLEMEN TOWN')
-sheet1.write(4, 0, 'RAJPUR ROAD')
-sheet1.write(5, 0, 'CLOCK TOWER')
-sheet1.write(0, 1, 'ISBT DEHRADUN')
-sheet1.write(0, 2, 'SHASTRADHARA')
-sheet1.write(0, 3, 'CLEMEN TOWN')
-sheet1.write(0, 4, 'RAJPUR ROAD')
-sheet1.write(0, 5, 'CLOCK TOWER')
-  
-wb.save('xlwt example.xls')
+def writeResult():
+    lines = [line.rstrip() for line in f]
+    results = []
+    for i in lines:   
+        results += [ast.literal_eval(i)]
+
+    wb = Workbook()
+
+    sheet1 = wb.add_sheet('Sheet 1')
+
+    #add the column names
+    for idx,val in enumerate(fields):
+        sheet1.write(0,idx+1,val)
+
+    #add the results
+    currentYear = results[0][1]
+    currentRow = 1
+
+    for j in results:
+        if j[1] != currentYear:
+            sheet1.write(currentRow, 0, currentYear)
+            currentYear = j[1]   
+            currentRow += 1
+            
+
+        if len(j) > 2:
+            sheet1.write(currentRow, fields.index(j[0])+1, listToString(changeFormat(j[2])))
+    sheet1.write(currentRow, 0, currentYear)
+
+    wb.save('xlwt example.xls')
+
+writeResult()

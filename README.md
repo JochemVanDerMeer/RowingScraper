@@ -11,4 +11,6 @@ The manual part of this scraper consists of adding URLS to scrape, these URLs ar
 
 ## Reflection
 
-I am member of Student Rowing Association Phocas, which is based in Nijmegen. Within the association, I am member of the data committee. My responsibility in this committee was to create this scraper, such that the results could be used by other members of the association for analytical purposes. Having partipated in the Dutch Championship Indoor Rowing myself, it was a nice project to build, as I also came across my own name in the results. The reason for building this scraper is that it saves a lot of time compared to having to fill a spreadsheet by manually typing the results.
+I am member of Student Rowing Association Phocas, which is based in Nijmegen. Within the association, I am member of the data committee. My responsibility in this committee was to create this scraper, such that the results could be used by other members of the association for analytical purposes. Having partipated in the Dutch Championship Indoor Rowing myself, it was a nice project to build, as I also came across my own name in the results.
+
+The reason for building this scraper is that it saves a lot of time compared to having to fill a spreadsheet by manually typing the results.

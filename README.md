@@ -1,4 +1,4 @@
-# Rowing Scraper
+# Rowing Scraper 🚣
 
 This project retrieves results from Student Rowing Association Phocas at the Dutch Championship Indoor Rowing (NKIR). The results are written to an .xls file, which can be used for further purposes by the association. Built with Python.
 
